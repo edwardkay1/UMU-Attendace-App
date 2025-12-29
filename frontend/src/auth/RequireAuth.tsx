@@ -1,17 +1,11 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { type ReactNode } from "react";
 
-interface Props {
-  role: "student" | "lecturer" | "admin";
+interface RequireAuthProps {
+  children: ReactNode;
 }
 
-const RequireAuth = ({ role }: Props) => {
-  const userRole = localStorage.getItem("role"); // mock auth
-
-  if (userRole !== role) {
-    return <Navigate to="/login" />;
-  }
-
-  return <Outlet />;
-};
-
-export default RequireAuth;
+export default function RequireAuth({ children }: RequireAuthProps) {
+  // TODO: Implement authentication logic
+  // For now, just render the children
+  return <>{children}</>;
+}
